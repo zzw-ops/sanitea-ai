@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { ChevronRight, ChevronLeft, Loader2, Leaf } from 'lucide-react';
-import { recommendTea, type AIRecipeRecommendationOutput } from '@/ai/flows/ai-recipe-recommendation-flow';
+import { getLocalRecommendation, type TeaRecommendation } from '@/lib/tea-logic';
 
 const STEPS = [
   {
@@ -45,7 +45,7 @@ const STEPS = [
 ];
 
 interface QuizFlowProps {
-  onComplete: (result: AIRecipeRecommendationOutput, answers: Record<string, string>) => void;
+  onComplete: (result: TeaRecommendation, answers: Record<string, string>) => void;
 }
 
 export function QuizFlow({ onComplete }: QuizFlowProps) {
@@ -73,21 +73,12 @@ export function QuizFlow({ onComplete }: QuizFlowProps) {
 
   const handleSubmit = async () => {
     setIsSubmitting(true);
-    try {
-      const result = await recommendTea({
-        currentState: answers.currentState || '',
-        tastePreference: answers.tastePreference || '',
-        drinkingScenario: answers.drinkingScenario || '',
-        temperaturePreference: answers.temperaturePreference || '',
-        currentSeason: answers.currentSeason || '',
-        avoidTaste: answers.avoidTaste || '',
-      });
+    // 模拟计算过程，增加产品体验感
+    setTimeout(() => {
+      const result = getLocalRecommendation(answers);
       onComplete(result, answers);
-    } catch (error) {
-      console.error('Failed to get recommendation:', error);
-    } finally {
       setIsSubmitting(false);
-    }
+    }, 1500);
   };
 
   const currentStepData = STEPS[currentStep];
@@ -97,19 +88,19 @@ export function QuizFlow({ onComplete }: QuizFlowProps) {
     <section id="quiz" className="py-24 bg-background min-h-[700px] flex items-center relative overflow-hidden">
       <div className="container mx-auto px-6 max-w-4xl relative z-10">
         <div className="text-center mb-16">
-          <h2 className="font-headline text-4xl mb-4 text-primary">AI 选茶小问答</h2>
-          <p className="text-primary/60 font-body tracking-[0.3em] uppercase text-[10px] font-medium">
+          <h2 className="font-headline text-4xl mb-4 text-brand-green">AI 选茶小问答</h2>
+          <p className="text-brand-green/60 font-body tracking-[0.3em] uppercase text-[10px] font-medium">
             用 30 秒告诉山宁你现在的状态
           </p>
         </div>
 
-        <div className="bg-card p-10 md:p-16 rounded-[48px] border border-border shadow-sm relative overflow-hidden">
+        <div className="bg-white p-10 md:p-16 rounded-[48px] border border-brand-grey shadow-sm relative overflow-hidden">
           <div className="mb-12">
-            <div className="flex justify-between items-center mb-4 text-[10px] tracking-widest text-primary/60 uppercase font-medium">
+            <div className="flex justify-between items-center mb-4 text-[10px] tracking-widest text-brand-green/60 uppercase font-medium">
               <span>{String(currentStep + 1).padStart(2, '0')} / {String(STEPS.length).padStart(2, '0')} 状态感知中</span>
-              <span className="text-accent font-semibold">{Math.round(progressValue)}%</span>
+              <span className="text-brand-gold font-semibold">{Math.round(progressValue)}%</span>
             </div>
-            <Progress value={progressValue} className="h-1 bg-border [&>div]:bg-primary" />
+            <Progress value={progressValue} className="h-1 bg-brand-grey [&>div]:bg-brand-green" />
           </div>
 
           <AnimatePresence mode="wait">
@@ -122,8 +113,8 @@ export function QuizFlow({ onComplete }: QuizFlowProps) {
               className="min-h-[300px]"
             >
               <div className="mb-10">
-                <h3 className="text-3xl font-headline mb-3 text-primary">{currentStepData.question}</h3>
-                <p className="text-muted-foreground text-sm font-body font-light">{currentStepData.description}</p>
+                <h3 className="text-3xl font-headline mb-3 text-brand-green">{currentStepData.question}</h3>
+                <p className="text-brand-green/70 text-sm font-body font-light">{currentStepData.description}</p>
               </div>
 
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -134,8 +125,8 @@ export function QuizFlow({ onComplete }: QuizFlowProps) {
                     className={`
                       py-4 px-6 rounded-2xl text-sm font-body tracking-widest transition-all border text-center
                       ${answers[currentStepData.id] === option 
-                        ? 'border-primary bg-primary text-primary-foreground shadow-lg' 
-                        : 'border-border bg-white/40 text-primary/80 hover:border-primary/30 hover:bg-white'}
+                        ? 'border-brand-green bg-brand-green text-white shadow-lg' 
+                        : 'border-brand-grey bg-white/40 text-brand-green/80 hover:border-brand-green/30 hover:bg-white'}
                     `}
                   >
                     {option}
@@ -150,7 +141,7 @@ export function QuizFlow({ onComplete }: QuizFlowProps) {
               variant="ghost"
               onClick={handlePrev}
               disabled={currentStep === 0 || isSubmitting}
-              className="text-primary/60 hover:text-primary disabled:opacity-30 flex items-center gap-2"
+              className="text-brand-green/60 hover:text-brand-green disabled:opacity-30 flex items-center gap-2"
             >
               <ChevronLeft size={18} />
               <span>上一步</span>
@@ -162,8 +153,8 @@ export function QuizFlow({ onComplete }: QuizFlowProps) {
               className={`
                 px-12 rounded-full h-14 flex items-center gap-2 font-medium tracking-widest shadow-xl transition-all
                 ${currentStep === STEPS.length - 1 
-                  ? 'bg-accent text-accent-foreground hover:opacity-90 shadow-accent/20' 
-                  : 'bg-primary text-primary-foreground hover:bg-primary/90 shadow-primary/10'}
+                  ? 'bg-brand-gold text-white hover:opacity-90 shadow-brand-gold/20' 
+                  : 'bg-brand-green text-white hover:bg-brand-green/90 shadow-brand-green/10'}
               `}
             >
               {isSubmitting ? (
@@ -186,7 +177,7 @@ export function QuizFlow({ onComplete }: QuizFlowProps) {
           </div>
           
           <div className="absolute -bottom-10 -right-10 w-40 h-40 opacity-[0.03] pointer-events-none">
-            <Leaf size={160} className="text-primary" />
+            <Leaf size={160} className="text-brand-green" />
           </div>
         </div>
       </div>
