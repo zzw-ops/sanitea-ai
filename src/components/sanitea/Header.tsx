@@ -5,7 +5,7 @@ export function Header() {
   const menuUrl = "https://6000-firebase-studio-1780562143273.cluster-m7dwy2bmizezqukxkuxd55k5ka.cloudworkstations.dev/menu";
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/70 backdrop-blur-md border-b border-border/50">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/70 backdrop-blur-md border-b border-border/50">
       <div className="container mx-auto px-6 h-20 flex items-center justify-between">
         <div className="flex items-center gap-12">
           <Link href="/" className="group flex items-baseline">
@@ -48,7 +48,7 @@ export function Header() {
           <Button variant="outline" className="hidden sm:flex border-primary/20 text-primary hover:bg-primary/5 rounded-full font-body tracking-wider text-xs">
             今日茶方
           </Button>
-          <Button className="bg-primary text-primary-foreground hover:opacity-90 rounded-full font-body font-medium tracking-widest px-6 h-10 shadow-sm">
+          <Button className="bg-accent text-accent-foreground hover:opacity-90 rounded-full font-body font-medium tracking-widest px-6 h-10 shadow-sm transition-all hover:scale-105 active:scale-95">
             开始选茶
           </Button>
         </div>

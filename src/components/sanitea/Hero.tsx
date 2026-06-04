@@ -40,7 +40,7 @@ export function Hero({ onStartQuiz }: HeroProps) {
               <Button 
                 onClick={onStartQuiz}
                 size="lg" 
-                className="bg-primary text-primary-foreground hover:opacity-90 h-14 px-12 rounded-full font-body text-lg font-medium tracking-widest shadow-xl shadow-primary/10"
+                className="bg-accent text-accent-foreground hover:opacity-90 h-14 px-12 rounded-full font-body text-lg font-medium tracking-widest shadow-xl shadow-accent/20 transition-all hover:scale-105"
               >
                 开始 AI 选茶
               </Button>
@@ -85,11 +85,6 @@ export function Hero({ onStartQuiz }: HeroProps) {
                   EXPLORE THE COLLECTION <ArrowRight size={14} />
                 </Link>
               </div>
-            </div>
-            
-            {/* Decorative leaf shapes */}
-            <div className="absolute -top-10 -right-10 w-40 h-40 opacity-10 pointer-events-none rotate-45">
-              <Leaf size={160} className="text-primary" />
             </div>
           </div>
         </div>
