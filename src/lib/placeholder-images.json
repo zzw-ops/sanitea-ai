@@ -1,3 +1,22 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-tea",
+      "description": "Premium tea set on dark background with steam",
+      "imageUrl": "https://picsum.photos/seed/tea-zen/800/600",
+      "imageHint": "herbal tea zen"
+    },
+    {
+      "id": "tea-leaf",
+      "description": "Close up of high quality tea leaves",
+      "imageUrl": "https://picsum.photos/seed/leaf-gold/400/300",
+      "imageHint": "tea leaf"
+    },
+    {
+      "id": "sanitea-philosophy",
+      "description": "Minimalist mountain silhouette",
+      "imageUrl": "https://picsum.photos/seed/mountain-fog/1200/400",
+      "imageHint": "mountain landscape"
+    }
+  ]
 }
