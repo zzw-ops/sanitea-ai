@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
-import { ChevronRight, ChevronLeft, Loader2 } from 'lucide-react';
+import { ChevronRight, ChevronLeft, Loader2, Leaf } from 'lucide-react';
 import { recommendTea, type AIRecipeRecommendationOutput } from '@/ai/flows/ai-recipe-recommendation-flow';
 
 const STEPS = [
