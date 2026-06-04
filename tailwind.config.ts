@@ -18,9 +18,12 @@ export default {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         brand: {
-          navy: '#0E1116',
-          gold: '#D4B868',
-          paper: '#F5F0E6',
+          green: '#183A2C',
+          lightGreen: '#5C7A63',
+          gold: '#C9A75A',
+          paper: '#F7F4EC',
+          rice: '#FAF8F2',
+          grey: '#EEE9DF',
         },
         card: {
           DEFAULT: 'hsl(var(--card))',
