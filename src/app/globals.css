@@ -4,26 +4,26 @@
 
 @layer base {
   :root {
-    --background: 45 33% 95%; /* #F7F4EC 米白色 */
-    --foreground: 155 41% 16%; /* #183A2C 深墨绿色 */
-    --card: 45 40% 98%; /* #FAF8F2 宣纸白 */
-    --card-foreground: 155 41% 16%;
-    --popover: 45 33% 95%;
-    --popover-foreground: 155 41% 16%;
-    --primary: 155 41% 16%; /* 深墨绿色 */
-    --primary-foreground: 45 33% 95%;
-    --secondary: 40 15% 90%; /* 浅米灰 */
-    --secondary-foreground: 155 41% 16%;
-    --muted: 40 15% 92%;
-    --muted-foreground: 155 10% 40%;
-    --accent: 43 50% 57%; /* #C9A75A 浅金色 */
-    --accent-foreground: 45 33% 95%;
+    --background: 34 30% 95%; /* #F7F4F0 绢纸色 */
+    --foreground: 157 21% 17%; /* #22332B 深墨绿 */
+    --card: 34 30% 97%; /* #FAF9F7 更浅的纸色 */
+    --card-foreground: 157 21% 17%;
+    --popover: 34 30% 95%;
+    --popover-foreground: 157 21% 17%;
+    --primary: 157 21% 17%; /* #22332B 深墨绿 */
+    --primary-foreground: 34 30% 95%;
+    --secondary: 34 10% 90%; 
+    --secondary-foreground: 157 21% 17%;
+    --muted: 34 10% 92%;
+    --muted-foreground: 157 10% 40%;
+    --accent: 37 55% 55%; /* #CC9B4D 桂花金 */
+    --accent-foreground: 34 30% 95%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 40 18% 83%; /* #DDD6C8 浅灰米色 */
-    --input: 40 18% 83%;
-    --ring: 155 41% 16%;
-    --radius: 1rem;
+    --border: 34 15% 85%; /* 适配纸色的边框 */
+    --input: 34 15% 85%;
+    --ring: 157 21% 17%;
+    --radius: 1.5rem;
   }
 }
 
@@ -33,26 +33,14 @@
   }
   body {
     @apply bg-background text-foreground;
-    background-image: radial-gradient(circle at center, rgba(255, 255, 255, 0.5) 0%, transparent 100%);
+    background-image: radial-gradient(circle at center, rgba(255, 255, 255, 0.4) 0%, transparent 100%);
   }
 }
 
 .paper-texture {
-  background-color: #F7F4EC;
+  background-color: #F7F4F0;
   background-image: url("https://www.transparenttextures.com/patterns/felt.png");
   background-blend-mode: multiply;
-}
-
-.glass-morphism-light {
-  @apply backdrop-blur-md bg-white/40 border border-[#DDD6C8]/50 shadow-xl;
-}
-
-.herbal-card {
-  @apply bg-[#FAF8F2] border border-[#DDD6C8] shadow-sm transition-all duration-300;
-}
-
-.herbal-card:hover {
-  @apply shadow-md border-[#5C7A63]/30;
 }
 
 .songti-font {
@@ -66,9 +54,4 @@
 
 .animate-fade-in {
   animation: fadeIn 0.8s ease-out forwards;
-}
-
-.fog-overlay-light {
-  background: linear-gradient(to bottom, transparent 0%, rgba(247, 244, 236, 0.8) 100%);
-  pointer-events: none;
 }

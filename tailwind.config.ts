@@ -18,12 +18,10 @@ export default {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         brand: {
-          green: '#183A2C',
-          lightGreen: '#5C7A63',
-          gold: '#C9A75A',
-          paper: '#F7F4EC',
-          rice: '#FAF8F2',
-          grey: '#EEE9DF',
+          green: '#22332B',
+          gold: '#CC9B4D',
+          paper: '#F7F4F0',
+          grey: '#DDD6C8',
         },
         card: {
           DEFAULT: 'hsl(var(--card))',
@@ -61,11 +59,6 @@ export default {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
-      },
-      animation: {
-        'accordion-down': 'accordion-down 0.2s ease-out',
-        'accordion-up': 'accordion-up 0.2s ease-out',
-        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
     },
   },

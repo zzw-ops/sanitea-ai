@@ -94,23 +94,22 @@ export function QuizFlow({ onComplete }: QuizFlowProps) {
   const progressValue = ((currentStep + 1) / STEPS.length) * 100;
 
   return (
-    <section id="quiz" className="py-24 bg-[#F2EDE3]/50 min-h-[700px] flex items-center">
-      <div className="container mx-auto px-6 max-w-4xl">
+    <section id="quiz" className="py-24 bg-brand-paper/50 min-h-[700px] flex items-center relative overflow-hidden">
+      <div className="container mx-auto px-6 max-w-4xl relative z-10">
         <div className="text-center mb-16">
-          <h2 className="font-headline text-4xl mb-4 text-[#183A2C]">AI 选茶小问答</h2>
-          <p className="text-[#3E4A42] font-body tracking-[0.3em] uppercase text-xs opacity-60">
+          <h2 className="font-headline text-4xl mb-4 text-brand-green">AI 选茶小问答</h2>
+          <p className="text-brand-green/60 font-body tracking-[0.3em] uppercase text-[10px] font-medium">
             用 30 秒告诉山宁你现在的状态
           </p>
         </div>
 
-        <div className="bg-[#FAF8F2] p-10 md:p-16 rounded-[40px] border border-[#DDD6C8] shadow-sm relative overflow-hidden">
-          {/* Progress Indicator */}
+        <div className="bg-white/40 backdrop-blur-sm p-10 md:p-16 rounded-[48px] border border-brand-grey shadow-sm relative overflow-hidden">
           <div className="mb-12">
-            <div className="flex justify-between items-center mb-4 text-xs tracking-widest text-[#3E4A42] uppercase">
-              <span className="font-medium">{String(currentStep + 1).padStart(2, '0')} / {String(STEPS.length).padStart(2, '0')} 状态感知中</span>
-              <span className="text-[#183A2C] font-semibold">{Math.round(progressValue)}%</span>
+            <div className="flex justify-between items-center mb-4 text-[10px] tracking-widest text-brand-green/60 uppercase font-medium">
+              <span>{String(currentStep + 1).padStart(2, '0')} / {String(STEPS.length).padStart(2, '0')} 状态感知中</span>
+              <span className="text-brand-green font-semibold">{Math.round(progressValue)}%</span>
             </div>
-            <Progress value={progressValue} className="h-1 bg-[#EEE9DF]" />
+            <Progress value={progressValue} className="h-1 bg-brand-grey/50" />
           </div>
 
           <AnimatePresence mode="wait">
@@ -119,12 +118,12 @@ export function QuizFlow({ onComplete }: QuizFlowProps) {
               initial={{ opacity: 0, x: 10 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -10 }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
               className="min-h-[300px]"
             >
               <div className="mb-10">
-                <h3 className="text-3xl font-headline mb-3 text-[#183A2C]">{currentStepData.question}</h3>
-                <p className="text-[#3E4A42] text-sm font-body opacity-80">{currentStepData.description}</p>
+                <h3 className="text-3xl font-headline mb-3 text-brand-green">{currentStepData.question}</h3>
+                <p className="text-brand-green/70 text-sm font-body font-light">{currentStepData.description}</p>
               </div>
 
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -135,8 +134,8 @@ export function QuizFlow({ onComplete }: QuizFlowProps) {
                     className={`
                       py-4 px-6 rounded-2xl text-sm font-body tracking-widest transition-all border text-center
                       ${answers[currentStepData.id] === option 
-                        ? 'border-[#183A2C] bg-[#183A2C] text-[#F7F4EC] shadow-md' 
-                        : 'border-[#DDD6C8] bg-white text-[#3E4A42] hover:border-[#183A2C]/30 hover:bg-[#F2EDE3]/50'}
+                        ? 'border-brand-green bg-brand-green text-brand-paper shadow-lg' 
+                        : 'border-brand-grey bg-white/60 text-brand-green/80 hover:border-brand-green/30 hover:bg-white'}
                     `}
                   >
                     {option}
@@ -151,7 +150,7 @@ export function QuizFlow({ onComplete }: QuizFlowProps) {
               variant="ghost"
               onClick={handlePrev}
               disabled={currentStep === 0 || isSubmitting}
-              className="text-[#3E4A42] hover:text-[#183A2C] disabled:opacity-30 flex items-center gap-2"
+              className="text-brand-green/60 hover:text-brand-green disabled:opacity-30 flex items-center gap-2"
             >
               <ChevronLeft size={18} />
               <span>上一步</span>
@@ -160,7 +159,10 @@ export function QuizFlow({ onComplete }: QuizFlowProps) {
             <Button
               onClick={handleNext}
               disabled={!answers[currentStepData.id] || isSubmitting}
-              className="bg-[#183A2C] text-[#F7F4EC] hover:bg-[#1F3D32] px-10 rounded-full h-12 flex items-center gap-2 font-medium tracking-widest shadow-lg shadow-[#183A2C]/10"
+              className={`
+                bg-brand-green text-brand-paper hover:bg-brand-green/90 px-12 rounded-full h-14 flex items-center gap-2 font-medium tracking-widest shadow-xl shadow-brand-green/10
+                ${currentStep === STEPS.length - 1 ? 'bg-brand-gold hover:bg-brand-gold/90' : ''}
+              `}
             >
               {isSubmitting ? (
                 <>
@@ -181,15 +183,10 @@ export function QuizFlow({ onComplete }: QuizFlowProps) {
             </Button>
           </div>
           
-          {/* Subtle decoration inside card */}
           <div className="absolute -bottom-10 -right-10 w-40 h-40 opacity-[0.03] pointer-events-none">
-            <Leaf size={160} className="text-[#183A2C]" />
+            <Leaf size={160} className="text-brand-green" />
           </div>
         </div>
-        
-        <p className="mt-8 text-center text-[10px] text-[#3E4A42]/60 tracking-[0.4em] uppercase">
-          AI 正在连接山宁茶饮灵感库 · 实时状态匹配
-        </p>
       </div>
     </section>
   );
