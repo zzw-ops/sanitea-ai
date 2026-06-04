@@ -9,7 +9,7 @@ interface HeroProps {
 }
 
 export function Hero({ onStartQuiz }: HeroProps) {
-  const menuUrl = "/menu";
+  const menuUrl = "https://6000-firebase-studio-1780562143273.cluster-m7dwy2bmizezqukxkuxd55k5ka.cloudworkstations.dev/menu";
 
   return (
     <section className="relative pt-32 pb-20 overflow-hidden min-h-screen flex items-center">

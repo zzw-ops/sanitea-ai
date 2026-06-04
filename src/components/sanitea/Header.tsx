@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 
 export function Header() {
-  const menuUrl = "/menu";
+  const menuUrl = "https://6000-firebase-studio-1780562143273.cluster-m7dwy2bmizezqukxkuxd55k5ka.cloudworkstations.dev/menu";
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/70 backdrop-blur-md border-b border-border/50">
