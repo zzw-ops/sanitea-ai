@@ -1,6 +1,6 @@
-import React, { useState, useRef } from 'react';
 'use client';
 
+import React, { useState, useRef } from 'react';
 import { Header } from '@/components/sanitea/Header';
 import { Hero } from '@/components/sanitea/Hero';
 import { QuizFlow } from '@/components/sanitea/QuizFlow';
