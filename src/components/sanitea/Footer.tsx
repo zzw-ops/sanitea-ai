@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 export function Footer() {
-  const menuUrl = "https://6000-firebase-studio-1780562143273.cluster-m7dwy2bmizezqukxkuxd55k5ka.cloudworkstations.dev/menu";
+  const menuUrl = "/menu";
 
   return (
     <footer className="bg-card pt-24 pb-12 border-t border-border">

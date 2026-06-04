@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 
 export function Header() {
-  const menuUrl = "https://6000-firebase-studio-1780562143273.cluster-m7dwy2bmizezqukxkuxd55k5ka.cloudworkstations.dev/menu";
+  const menuUrl = "/menu";
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/70 backdrop-blur-md border-b border-border/50">
@@ -48,8 +48,8 @@ export function Header() {
           <Button variant="outline" className="hidden sm:flex border-primary/20 text-primary hover:bg-primary/5 rounded-full font-body tracking-wider text-xs">
             今日茶方
           </Button>
-          <Button className="bg-accent text-accent-foreground hover:opacity-90 rounded-full font-body font-medium tracking-widest px-6 h-10 shadow-sm transition-all hover:scale-105 active:scale-95">
-            开始选茶
+          <Button asChild className="bg-primary text-primary-foreground hover:opacity-90 rounded-full font-body font-medium tracking-widest px-6 h-10 shadow-sm transition-all hover:scale-105 active:scale-95">
+            <Link href="/#quiz">开始选茶</Link>
           </Button>
         </div>
       </div>
