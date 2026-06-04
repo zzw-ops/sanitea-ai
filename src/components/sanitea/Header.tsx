@@ -2,13 +2,14 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 
 export function Header() {
+  const homeUrl = "https://9000-firebase-studio-1780562143273.cluster-m7dwy2bmizezqukxkuxd55k5ka.cloudworkstations.dev";
   const menuUrl = "https://6000-firebase-studio-1780562143273.cluster-m7dwy2bmizezqukxkuxd55k5ka.cloudworkstations.dev/menu";
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/70 backdrop-blur-md border-b border-border/50">
       <div className="container mx-auto px-6 h-20 flex items-center justify-between">
         <div className="flex items-center gap-12">
-          <Link href="/" className="group flex items-baseline">
+          <Link href={homeUrl} className="group flex items-baseline">
             <h1 className="font-headline text-2xl font-semibold tracking-widest text-primary">
               山宁 <span className="text-xs tracking-[0.2em] ml-1 font-body opacity-80 uppercase font-light">Shanning</span>
             </h1>
@@ -17,10 +18,10 @@ export function Header() {
           </Link>
           
           <nav className="hidden lg:flex items-center gap-8">
-            {['首页', '品牌理念', '产品系列', '四季茶单', 'AI 选茶', '联系我们'].map((item) => {
+            {['首页', '四季茶单', 'AI 选茶'].map((item) => {
               let href = '#';
               if (item === 'AI 选茶') href = '#quiz';
-              if (item === '首页') href = '/';
+              if (item === '首页') href = homeUrl;
               if (item === '四季茶单') href = menuUrl;
 
               return (
